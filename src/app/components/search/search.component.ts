@@ -8,13 +8,14 @@ import { Component } from '@angular/core';
 })
 export class SearchComponent {
 
+  artists : any[] = [];
+
   constructor(private spotifyService: SpotifyService) { }
 
   buscar(termino: string) {
     this.spotifyService.getArtist(termino).subscribe(
       (data: any) => {
-        console.log(data.artists.items);
-        // TODO Continuar exportando los resultados de busqueda
+        this.artists = data;
       }
     );
   }
